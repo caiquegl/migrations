@@ -1,6 +1,8 @@
 const Sequelize = require("sequelize");
 const config = require("../config/database");
 const bcrypt = require("bcrypt");
+const { usuarios } = require("../models");
+
 
 const autentificacao = {
     validando:(req,res,next)=>{
@@ -12,17 +14,14 @@ const autentificacao = {
     },
     validatorLogin: async (req, res) => {
         const { email, password } = req.body;
-        const con = new Sequelize(config);
     
-        const [usuario] = await con.query(
-          "select * from usuarios where email=:email;",
-          {
-            replacements: {
+        const [usuario] = await usuarios.findAll({
+          
+            where: {
               email,
-            },
-            type: Sequelize.QueryTypes.SELECT,
-          }
-        );
+            }
+            
+        });
     
         if (!usuario || !bcrypt.compareSync(password, usuario.password)) {
           return res.render("login", {

@@ -17,24 +17,21 @@ module.exports = {
        },
      endereco:{
        type: Sequelize.STRING,
-       allowNull: false,
-     },
+      },
      pedido_status:{
        type: Sequelize.INTEGER,
-       allowNull: false,
-     },
+      },
      data_pedido:{
        type: Sequelize.DATE,
-       allowNull: false,
-     },
+      },
      id_usuario:{
        type: Sequelize.INTEGER,
-       allowNull: false,
-     },
+      },
      id_carrinho:{
       type: Sequelize.INTEGER,
-      allowNull: false,
-    }
+    },
+    createdAt: Sequelize.DATE,
+      updatedAt: Sequelize.DATE,
      });
 
  },

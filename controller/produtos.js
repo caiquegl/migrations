@@ -1,60 +1,43 @@
 const Sequelize = require("sequelize");
-const config = require("../config/database");
 const bcrypt = require("bcrypt");
+const { produtos } = require("../models");
+
 
 const produtosController = {
     storeProduto: async (req, res) => {
         const {nome_produto, valor, descricao, id_usuario} = req.body;
-        const con = new Sequelize(config);
         const [foto] = req.files;
-        const {usuario} = req.session;
-       
-        
-  
-  
-        const user = await con.query(
-            "INSERT INTO produtos (nome_produto, valor, descricao, id_usuario, foto) values (:nome_produto, :valor, :descricao,:id_usuario, :foto)",
-            {
-              replacements: {
+        let id = req.session.usuario.id;
+
+        const produtos = await produtos.create({
                 nome_produto,
                 valor,
                 descricao, 
-                id_usuario: usuario.id,
-                foto: [foto.filename]
-              },
-              type: Sequelize.QueryTypes.INSERT,
-            }
-            );
-  
-            
-            
-            
+                id_usuario: id,
+                foto: foto.filename,
+                createdAt: Date.now,
+                updatedAt: Date.now,
+            });
+
             return res.redirect("paginaAdmin");
     },
-    ecomerce: async(req, res) => {
-        const con = new Sequelize(config);
+    ecomerce: async (req, res) => {
   
-        const produtos = await con.query("select * from produtos",
-          {
-            type: Sequelize.QueryTypes.SELECT,
-          }
-        );
+        const produtos = await produtos.findAll();
       
-          return res.render("ecomerce", {usuario: req.session.usuario, produtos: produtos});
+          return res.render("ecomerce", {usuario: req.session.usuario, produtos});
       },
       infoProdutos: async (req, res) => {
         const con = new Sequelize(config);
         const id = req.params.id;
-        const infoProduto = await con.query(
-          "select * from produtos where id_produto=:produtos_id;",
-          {
-            replacements: {
-              produtos_id: id
-          },
-            type: Sequelize.QueryTypes.SELECT,
-          }
-        );
-          return res.render("infoProdutos", {usuario: req.session.usuario, infoProduto: infoProduto});
+        // const infoProduto = await produtos.findAll(
+        //   {
+        //     where: {
+        //       produtos_id: id
+        //     }
+        //   });
+         
+        //   return res.render("infoProdutos", {usuario: req.session.usuario, infoProduto: infoProduto});
       },
 }
 

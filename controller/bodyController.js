@@ -2,6 +2,9 @@ const Sequelize = require("sequelize");
 const config = require("../config/database");
 const bcrypt = require("bcrypt");
 
+const { produtos } = require("../models");
+
+
 
 const bodyController = {
     home: async(req, res) => {

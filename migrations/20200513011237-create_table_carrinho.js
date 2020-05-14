@@ -17,20 +17,18 @@ module.exports = {
        },
      nome_produto:{
        type: Sequelize.STRING,
-       allowNull: false,
      },
      quantidade_produto:{
        type: Sequelize.INTEGER,
-       allowNull: false,
      },
      valor_produto:{
        type: Sequelize.DECIMAL,
-       allowNull: false,
      },
      valor_total_produto:{
        type: Sequelize.DECIMAL,
-       allowNull: false,
-     }
+     },
+     createdAt: Sequelize.DATE,
+    updatedAt: Sequelize.DATE,
      });
 
  },

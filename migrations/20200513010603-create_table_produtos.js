@@ -18,19 +18,29 @@ module.exports = {
   nome_produto:{
     type: Sequelize.STRING,
     allowNull: false,
+
   },
-  foro:{
+  foto:{
     type: Sequelize.STRING,
     allowNull: false,
+
   },
   descricao:{
     type: Sequelize.STRING,
     allowNull: false,
+
   },
   valor:{
     type: Sequelize.DECIMAL,
     allowNull: false,
-  }
+
+  },
+  id_usuario:{
+    type: Sequelize.INTEGER,
+    allowNull: false,
+  },
+  createdAt: Sequelize.DATE,
+  updatedAt: Sequelize.DATE,
   });
 
   },

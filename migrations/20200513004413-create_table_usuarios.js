@@ -22,22 +22,23 @@ module.exports = {
       email:{
         type: Sequelize.STRING,
         allowNull: false,
+        unique: true,
       },
       CPF:{
         type: Sequelize.STRING,
         allowNull: false,
+        unique: true,
       },
       nome:{
         type: Sequelize.STRING,
         allowNull: false,
+
       },
       endereco:{
         type: Sequelize.STRING,
-        allowNull: false,
       },
       nascimento:{
         type: Sequelize.DATE,
-        allowNull: false,
       },
       sexo:{
         type: Sequelize.BOOLEAN,
@@ -48,7 +49,7 @@ module.exports = {
       vendedor:{
         type: Sequelize.BOOLEAN,
       },
-      createAt: Sequelize.DATE,
+      createdAt: Sequelize.DATE,
       updatedAt: Sequelize.DATE,
       });
 
