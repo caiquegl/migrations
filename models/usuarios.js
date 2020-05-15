@@ -41,7 +41,12 @@ module.exports = (sequelize, DataTypes) => {
         },
         createdAt: DataTypes.DATE,
         updatedAt: DataTypes.DATE,
+        
         });
+
+        usuarios.associate = (models) => {
+          usuarios.hasMany(models.produtos, {as: "produtos"})
+        };
         
         return usuarios;
 

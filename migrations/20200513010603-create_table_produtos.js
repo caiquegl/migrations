@@ -38,6 +38,10 @@ module.exports = {
   id_usuario:{
     type: Sequelize.INTEGER,
     allowNull: false,
+    references: {
+      model: "usuarios",
+      key: "id_usuario",
+      }
   },
   createdAt: Sequelize.DATE,
   updatedAt: Sequelize.DATE,

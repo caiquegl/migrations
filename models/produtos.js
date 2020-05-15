@@ -28,10 +28,18 @@ module.exports = (sequelize, DataTypes) =>{
   id_usuario:{
     type: DataTypes.INTEGER,
     allowNull: false,
+    references: {
+      model: "usuarios",
+      key: "id_usuario"
+      },
   },
   createdAt: DataTypes.DATE,
         updatedAt: DataTypes.DATE,
   });
+
+  produtos.associate = (models) => {
+    produtos.belongsTo(models.usuarios, {as: 'usuarios'});
+  }
   return produtos;
 
 }
