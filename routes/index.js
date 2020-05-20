@@ -24,7 +24,7 @@ router.post('/registro', regisController.store);
 
 
 router.get('/carrinho', autenController.validando ,bodyController.carrinho);
-router.post('/carrinho', autenController.validando ,carrinhoController.store);
+router.post('/carrinho', autenController.validando ,carrinhoController.remove);
 
 
 router.get('/cliente', autenController.validando, bodyController.cliente);

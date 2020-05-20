@@ -1,18 +1,21 @@
 module.exports = (sequelize, DataTypes) => {
-    const Carrinho = sequelize.define(
-        "Carrinho", 
+    const carrinhos = sequelize.define(
+        "carrinhos", 
         {
             id_carrinho:{
                 type: DataTypes.INTEGER,
                 primaryKey: true,
                 autoIncrement: true,
                 },
+                foto_produto:{
+                  type: DataTypes.STRING,
+                },
               nome_produto:{
                 type: DataTypes.STRING,
                 allowNull: false,
               },
               quantidade_produto:{
-                type: DataTypes.INTEGER,
+                type: DataTypes.FLOAT,
                 allowNull: false,
               },
               valor_produto:{
@@ -23,9 +26,33 @@ module.exports = (sequelize, DataTypes) => {
                 type: DataTypes.DECIMAL,
                 allowNull: false,
               },
+              id_usuario:{
+                type: DataTypes.INTEGER,
+                allowNull: false,
+                // references: {
+                //   model: "usuarios",
+                //   key: "id_usuario"
+                //   },
+              },
+              id_produto:{
+                type: DataTypes.INTEGER,
+                allowNull: false,
+                unique: true,
+                // references: {
+                //   model: "usuarios",
+                //   key: "id_usuario"
+                //   },
+              },
               createdAt: DataTypes.DATE,
-        updatedAt: DataTypes.DATE,
+              updatedAt: DataTypes.DATE,
         });
-    return Carrinho;
+        carrinhos.associate = (models) => {
+        carrinhos.belongsTo(models.usuarios, {foreignKey:"id_usuario", as: 'usuarios'});
+        };
+        carrinhos.associate = (models) => {
+          carrinhos.belongsTo(models.produtos, {foreignKey:"id_produto", as: 'produtos'});
+        };
+
+    return carrinhos;
   
     };

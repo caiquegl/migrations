@@ -27,19 +27,18 @@ const produtosController = {
   
         const produtosDb = await produtos.findAll();
       
-          return res.render("ecomerce", {usuario: req.session.usuario, produtosDb});
+          return res.render("ecomerce", {usuario: req.session.usuario, produtosDb, quantItens: req.session.count});
       },
       infoProdutos: async (req, res) => {
-        const con = new Sequelize(config);
         const id = req.params.id;
-        // const infoProduto = await produtos.findAll(
-        //   {
-        //     where: {
-        //       produtos_id: id
-        //     }
-        //   });
+        const infoProduto = await produtos.findAll(
+          {
+            where: {
+              id_produtos: id
+            }
+          });
          
-        //   return res.render("infoProdutos", {usuario: req.session.usuario, infoProduto: infoProduto});
+          return res.render("infoProdutos", {usuario: req.session.usuario, infoProduto: infoProduto, quantItens: req.session.count});
       },
 }
 

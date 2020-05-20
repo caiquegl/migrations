@@ -2,6 +2,8 @@ const Sequelize = require("sequelize");
 const config = require("../config/database");
 const bcrypt = require("bcrypt");
 const { usuarios } = require("../models");
+const {carrinhos} = require("../models");
+
 
 
 const autentificacao = {
@@ -39,6 +41,24 @@ const autentificacao = {
           nascimento: usuario.nascimento,
           sexo: usuario.sexo,
         };
+
+
+
+        let id = req.session.usuario.id;
+
+        count = await carrinhos.count({
+          where: {
+            id_usuario: id
+          }
+        })
+
+        req.session.count = {
+          count: count,
+        };
+
+        console.log(count)
+        
+      
             return res.redirect("cliente");
       
     

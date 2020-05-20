@@ -10,7 +10,7 @@ module.exports = {
       return queryInterface.createTable('users', { id: Sequelize.INTEGER });
     */
    return queryInterface.createTable('produtos', {
-   id_produtos:{
+   id_produto:{
     type: Sequelize.INTEGER,
     primaryKey: true,
     autoIncrement: true,

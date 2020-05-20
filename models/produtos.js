@@ -4,7 +4,7 @@ module.exports = (sequelize, DataTypes) =>{
   
     const produtos = sequelize.define(
         "produtos",{
-   id_produtos:{
+   id_produto:{
     type: DataTypes.INTEGER,
     primaryKey: true,
     autoIncrement: true,
@@ -39,7 +39,10 @@ module.exports = (sequelize, DataTypes) =>{
 
   produtos.associate = (models) => {
     produtos.belongsTo(models.usuarios, {foreignKey:"id_usuario", as: 'usuarios'});
-  }
+  };
+  produtos.associate = (models) => {
+    produtos.hasMany(models.carrinhos, {foreignKey:"id_produto", as: "carrinho"})
+  };
   return produtos;
 
 }
