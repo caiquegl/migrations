@@ -22,7 +22,7 @@ module.exports = {
   },
   foto:{
     type: Sequelize.STRING,
-    allowNull: false,
+    allowNull: true,
 
   },
   descricao:{

@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) =>{
     },
   nome_produto:{
     type: DataTypes.STRING,
-    allowNull: false,
+    allowNull: true,
   },
   foto:{
     type: DataTypes.STRING,
@@ -28,17 +28,17 @@ module.exports = (sequelize, DataTypes) =>{
   id_usuario:{
     type: DataTypes.INTEGER,
     allowNull: false,
-    references: {
-      model: "usuarios",
-      key: "id_usuario"
-      },
+    // references: {
+    //   model: "usuarios",
+    //   key: "id_usuario"
+    //   },
   },
   createdAt: DataTypes.DATE,
-        updatedAt: DataTypes.DATE,
+  updatedAt: DataTypes.DATE,
   });
 
   produtos.associate = (models) => {
-    produtos.belongsTo(models.usuarios, {as: 'usuarios'});
+    produtos.belongsTo(models.usuarios, {foreignKey:"id_usuario", as: 'usuarios'});
   }
   return produtos;
 

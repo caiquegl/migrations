@@ -1,6 +1,6 @@
 const Sequelize = require("sequelize");
 const bcrypt = require("bcrypt");
-const { produtos } = require("../models/produtos");
+const { produtos } = require("../models");
 
 
 const produtosController = {
@@ -9,7 +9,9 @@ const produtosController = {
         const [foto] = req.files;
         let id = req.session.usuario.id;
 
-        const produtos = await produtos.create({
+        console.log(produtos);
+
+        const produtosDb = await produtos.create({
                 nome_produto,
                 valor,
                 descricao, 
@@ -23,9 +25,9 @@ const produtosController = {
     },
     ecomerce: async (req, res) => {
   
-        const [produtos] = await produtos.findAll();
+        const produtosDb = await produtos.findAll();
       
-          return res.render("ecomerce", {usuario: req.session.usuario, produtos});
+          return res.render("ecomerce", {usuario: req.session.usuario, produtosDb});
       },
       infoProdutos: async (req, res) => {
         const con = new Sequelize(config);
