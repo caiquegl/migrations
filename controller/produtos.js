@@ -17,8 +17,8 @@ const produtosController = {
                 descricao, 
                 id_usuario: id,
                 foto: foto.filename,
-                createdAt: Date.now,
-                updatedAt: Date.now,
+                createdAt: new Date(),
+                updatedAt: new Date(),
             });
 
             return res.redirect("paginaAdmin");

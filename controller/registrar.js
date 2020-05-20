@@ -18,8 +18,8 @@ const registerController = {
                 sexo,
                 ofertas,
                 vendedor: 0,
-                createdAt: Date.now,
-                updatedAt: Date.now,
+                createdAt: new Date(),
+                updatedAt: new Date(),
             });
             if (!email) {
               return res.render("register", {
