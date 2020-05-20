@@ -183,13 +183,13 @@
                       <% produtosDb.forEach(element => {%> 
 
                     <div class="produtos">
-                      <a href="/infoProdutos/<%= element.id_produtos %>">
+                      <a href="/infoProdutos/<%= element.id_produto %>">
                         <img src="foto/<%= element.foto %>" alt="Produto">                        
                         <article>
                             <p class="titulo"><%= element.nome_produto %></p>
                             <div class="row">
-                            <p class="left">De <em><%= element.valor %></em></p>
-                            <P class="right"><%= element.valor %></P>
+                            <p class="left">De R$<em><%= element.valor %>,00</em></p>
+                            <P class="right">Por R$<%= element.valor %>,00</P>
                             </div>
                         </article>
                       </a>

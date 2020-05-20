@@ -34,7 +34,7 @@ const produtosController = {
         const infoProduto = await produtos.findAll(
           {
             where: {
-              id_produtos: id
+              id_produto: id
             }
           });
          

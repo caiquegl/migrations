@@ -533,16 +533,16 @@ article .right{
     margin-bottom: 20px;
     border-radius: 5px;
     font-weight: bold;
-    margin-left: 60px;
+    margin-left: 60px !important;
     border: none;
-    background-color: #DBD5B6;
-    width: 185px;
+    background-color: #DBD5B6 !important;
+    width: 185px !important;
     height: 39px;
     text-align: left;
     text-transform: uppercase;
     letter-spacing: 1px;
 }
-.btn-comprar img{
+.btn-comprar .img{
     margin-left: 20px;
     max-width: 30px;
     max-height: 30px;
@@ -1267,6 +1267,7 @@ h5{
 
 
 /* pagina admin */
+
 .vendidos h2{
     width: 100%;
     padding-top: 20px;

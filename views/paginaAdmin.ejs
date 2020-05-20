@@ -63,7 +63,7 @@
                     <label for="valor">
                         Valor do produto
                     </label>
-                    <input name="valor" placeholder="$1,000,000.00">
+                    <input name="valor" type="text" data-inputmask="'mask': '00.000,00'">
                 </div>
                 <div class="form-group">
                     <label for="descricao">
@@ -89,7 +89,7 @@
                 <% produtos.forEach(element => {%> 
                     <li>
                         <div>
-                            Nome do produto: <strong><%= element.nome_produto %></strong> | Codígo do produto: <strong><%= element.id_produto %></strong>| Quantidade vendida: <strong>5</strong> | Total a receber: <strong>R$ <%= element.valor %></strong>
+                            Nome do produto: <strong><%= element.nome_produto %></strong> | Codígo do produto: <strong><%= element.id_produto %></strong>| Quantidade vendida: <strong>5</strong> | Total a receber: <strong>R$ <%= element.valor %>,00</strong>
                         </div>
                         <hr>
                     </li>
@@ -98,5 +98,8 @@
             </ul>
         </div>
     </div>
+
+    
+
     
     <%- include('./partials/footer') %>
